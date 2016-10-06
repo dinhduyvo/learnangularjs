@@ -3,7 +3,7 @@
   angular.module('CheckIfTooMuchApp',[])
   .controller('CheckIfTooMuchController', function($scope){
     $scope.foods = "";
-    $scope.checkResult = "Enjoy!";
+    $scope.checkResult = "";
     $scope.textColor = "black";
 
     $scope.doCheck = function(){

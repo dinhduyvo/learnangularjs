@@ -14,9 +14,12 @@
     function checkIfTooMuch(string){
 
       // not counting an 'empty' item towards the count
-      while (string.match(/,\s*,/g)) {
+      while (string.match(/(,\s*,)|(,\s*$)/g)) {
         string = string.replace(/,\s*,/gi,',');
+        string = string.replace(/,\s*$/gi,'');
       }
+
+      $scope.foods = string;
 
       // If the textbox is empty
       if (string.trim().length == 0) {

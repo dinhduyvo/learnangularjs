@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>My first angular js</title>
+    
+  </head>
+  <body>
+    <h1>HTM5 custom attributes</h1>
+    <div id="target" ng-app="MyTestApp">
+      <section>Section 1
+        <article>article 1</article>
+      </section>
+    </div>
+    <script>
+      ele2 = document.querySelector("[ng-app]");
+      console.log(ele2);
+      console.log(ele2.getAttribute('ng-app'));
+    </script>
+  </body>
+</html>

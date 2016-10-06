@@ -1,0 +1,20 @@
+<html ng-app="DIApp">
+  <head>
+    <meta charset="utf-8"/>
+    <title>>Dependency Injection in JS</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <h1>Dependency Injection in JS</h1>
+    <div ng-controller="DIController">
+      <div>
+        Enter your name:
+        <input type="text"
+        ng-model="name"
+        ng-blur="upper();">
+      </div>
+
+    </div>
+  </body>
+</html>

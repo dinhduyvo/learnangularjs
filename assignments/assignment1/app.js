@@ -19,8 +19,6 @@
         string = string.replace(/,\s*$/gi,'');
       }
 
-      $scope.foods = string;
-
       // If the textbox is empty
       if (string.trim().length == 0) {
         $scope.textColor = "red";

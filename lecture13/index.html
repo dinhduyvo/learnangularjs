@@ -1,0 +1,23 @@
+<html ng-app="MsgApp">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Lecture 12</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <h1>Show message</h1>
+    <div ng-controller="MsgController">
+      Original: {{sayMessage()}} <br/>
+      Loves: {{sayLoveMessage()}} <br/>
+      Truth: {{sayLoveMessage() | truth : 'would' : 'can'}} <br/>
+      Big Truth: {{sayLoveMessage() | truth : 'would' : 'can' | uppercase}}
+      <div>
+        <button ng-click="feedYaakov()">Feed Yaakov</button>
+        <br>
+
+        <img ng-src="../img/yaakov_{{stateOfBeing}}.png">
+      </div>
+    </div>
+  </body>
+</html>

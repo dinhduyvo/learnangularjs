@@ -1,0 +1,22 @@
+<html ng-app="MsgApp">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Lecture 12</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <h1>Show message</h1>
+    <div ng-controller="MsgController">
+      {{name}} has a message for you: <br>
+      {{sayMessage()}}
+      <div>
+        <button ng-click="feedYaakov()">Feed Yaakov</button>
+        Cost: {{cookieCost | currency : "$" : 4}}
+        <br>
+
+        <img ng-src="../img/yaakov_{{stateOfBeing}}.png">
+      </div>
+    </div>
+  </body>
+</html>

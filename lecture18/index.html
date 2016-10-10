@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Lecture 18</title>
+    <script src="../js/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body ng-app="ShoppingListApp">
+    <h1>ng-repeat</h1>
+    <div ng-controller="ShoppingListController">
+      <h3>Shopping List: </h3>
+      <input type="text" ng-model="search">
+      <ul>
+        <li ng-repeat="item in shoppingList | filter : search">{{item}}</li>
+      </ul>
+    </div>
+  </body>
+</html>

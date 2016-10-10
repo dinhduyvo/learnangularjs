@@ -1,0 +1,42 @@
+<html ng-app="CheckOffApp">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Check Off App</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link href="../../bootstrap.css" rel=stylesheet />
+    <link href="style.css" rel=stylesheet />
+  </head>
+  <body  class="container">
+    <div class="row">
+      <div class="col-md-12">
+      <h4><p class="bg-info" >Check Off Application</p></h4>
+    </div>
+    </div>
+    <div  class="row">
+      <div ng-controller="ToBuyController as toBuyList" class="col-xs-6 highlight" style="background: #fff; ">
+        <div class="row">
+          <h4>To buy</h4>
+          <hr/>
+          <ol>
+            <li ng-repeat="item in toBuyList.toBuyItems">{{ item.quantity }} of {{ item.name }}
+              <button ng-click="toBuyList.moveToBought($index);" >Bought</button>
+            </li>
+          </ol>
+          <p ng-if="toBuyList.toBuyItems.length == 0" class="bg-danger">Everything is bought!</p>
+        </div>
+      </div>
+      <div ng-controller="AlreadyBoughtController as boughtList" class="col-xs-6 highlight" style="background: #fff">
+        <div class="row">
+          <h4>Already Bought</h4>
+          <hr/>
+          <ol>
+            <li ng-repeat="item2 in boughtList.boughtItems">{{ item2.quantity }} of {{ item2.name }}
+            </li>
+          </ol>
+          <p ng-if="boughtList.boughtItems.length == 0" class="bg-danger">Nothing bought yet!</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -2,6 +2,6 @@
 <ul>
   <li ng-repeat="item in menu.items">
     <h4>( {{ item.short_name }} ) {{ item.name }} <button ng-click="menu.removeItem($index)">Don't want this one!</button></h4>
-    {{ item.special_instructions }}
+    {{ item.description }}
   </li>
 </ul>

@@ -72,11 +72,11 @@
 
       var response = $http({
         method: "GET",
-        url: (ApiBasePath + "/categories.json")
+        url: (ApiBasePath + "/menu_items.json")
       }).then(function (result) {
           searchCategories = [];
-          result.data.forEach(function (item) {
-              if(item.special_instructions.indexOf(keyword) !==-1
+          result.data.menu_items.forEach(function (item) {
+              if(item.description.indexOf(keyword) !==-1
                   || item.name.indexOf(keyword) !==-1
                   || item.short_name.indexOf(keyword) !==-1) {
                 searchCategories.push(item);

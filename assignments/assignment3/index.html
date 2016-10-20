@@ -8,7 +8,7 @@
     <link href="style.css" rel=stylesheet />
   </head>
   <body>
-    <div ng-controller="MenuSearchController as menu" class="col-xs-12 highlight" style="background: #fff">
+    <div ng-controller="NarrowItDownController as menu" class="col-xs-12 highlight" style="background: #fff">
       <div class="row">
         <h4>Menu Search</h4>
         <hr/>
@@ -22,7 +22,7 @@
         <hr/>
         <div>
           <menu-search
-            items="{{ menu.items }}"
+            items-list="{{ menu.items }}"
             title="{{ menu.title}}"></menu-search>
         </div>
       </div>

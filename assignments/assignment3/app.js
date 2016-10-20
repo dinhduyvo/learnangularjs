@@ -2,21 +2,36 @@
   'use trict';
 
   angular.module('MenuSearchApp', [])
-    .controller('MenuSearchController', MenuSearchController)
+    .controller('NarrowItDownController', NarrowItDownController)
     .service('MenuSearchService', MenuSearchService)
     .directive("menuSearch", MenuSearchDirective)
     .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
   function MenuSearchDirective(){
     var ddo = {
-      templateUrl: 'founditems.html'
+      templateUrl: 'founditems.html',
+      controller:  DirectiveController,
+      controllerAs: 'ctrl',
+      bindToController: true,
     };
 
     return ddo;
   }
 
-  MenuSearchController.$inject = ['MenuSearchService'];
-  function MenuSearchController(MenuSearchService){
+  function DirectiveController(){
+    var direct = this;
+
+    direct.checkEmpty = function(){
+      if(direct.items.length === 0){
+        return true;
+      }
+      return false;
+    }
+
+  }
+
+  NarrowItDownController.$inject = ['MenuSearchService'];
+  function NarrowItDownController(MenuSearchService){
     var menu = this;
     menu.keyword = "";
 

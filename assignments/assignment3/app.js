@@ -4,17 +4,12 @@
   angular.module('MenuSearchApp', [])
     .controller('MenuSearchController', MenuSearchController)
     .service('MenuSearchService', MenuSearchService)
-    .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com")
-    .directive("menuSearch", MenuSearchDirective);
+    .directive("menuSearch", MenuSearchDirective)
+    .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
 
   function MenuSearchDirective(){
     var ddo = {
-      templateUrl: 'founditems.html',
-      scope: {
-        items: '<',
-        myTitle: '@title',
-        onRemove: '&'
-      }
+      templateUrl: 'founditems.html'
     };
 
     return ddo;
@@ -23,48 +18,90 @@
   MenuSearchController.$inject = ['MenuSearchService'];
   function MenuSearchController(MenuSearchService){
     var menu = this;
-    var promise = MenuSearchService.getMenuCategories();
-
     menu.keyword = "";
 
     menu.title = "";
+    menu.items = [];
 
-    menu.doSearch = function(){
-      menu.searchCategories = [];
-      console.log(menu.keyword);
+    menu.doSearch = function(response){
+      if (menu.keyword) {
+        var promise1 = MenuSearchService.doSearch(menu.keyword);
+        promise1.then(function (response) {
 
-      promise.then(function(response){
-
-        menu.allCategories = response.data;
-        //console.log(response.data);
-
-        menu.allCategories.forEach(function (item) {
-          if(item.special_instructions.indexOf(menu.keyword)) {
-            MenuSearchService.addFoundItem(item);
+          menu.items = MenuSearchService.getFoundItems();
+          if(menu.items.length > 0) {
+            menu.title = "Found items:  (" + MenuSearchService.getCount() + " categories found)";
           }
-          // console.log(item.special_instructions);
+          else {
+            menu.title = "Nothing found!";
+          }
+        }).catch(function(error){
+          menu.title = "Nothing found!";
         });
-      });
+      }
+      else{
+        menu.title = "Nothing found!";
+        menu.items = [];
+      }
+    };
 
-      menu.title = " (" + MenuSearchService.getCount() + " categories )";
-      console.log(menu.title);
+    menu.removeItem = function(itemIndex){
+      MenuSearchService.removeItem(itemIndex);
+      if(menu.items.length > 0) {
+        menu.title = "Found items:  (" + menu.items.length + " categories found)";
+      }
+      else {
+        menu.title = "Nothing found!";
+      }
+      menu.items = MenuSearchService.getFoundItems();
     }
   }
 
-  MenuSearchService.$inject = ['$http', 'ApiBasePath'];
-  function MenuSearchService($http, ApiBasePath){
+  MenuSearchService.$inject = ['$http', 'ApiBasePath', '$q'];
+  function MenuSearchService($http, ApiBasePath, $q){
     var service = this;
     var searchCategories = [];
 
-    service.getMenuCategories = function(shortname){
-      
+    service.doSearch = function(keyword){
+      var deferred = $q.defer();
+      var result = {
+        message: ""
+      };
+
       var response = $http({
         method: "GET",
         url: (ApiBasePath + "/categories.json")
-      });
-
-      return response;
+      }).then(function (result) {
+          searchCategories = [];
+          result.data.forEach(function (item) {
+              if(item.special_instructions.indexOf(keyword) !==-1
+                  || item.name.indexOf(keyword) !==-1
+                  || item.short_name.indexOf(keyword) !==-1) {
+                searchCategories.push(item);
+                console.log("Found: " + item.name);
+                console.log(searchCategories.length);
+              }
+          });
+          if(searchCategories.length > 0){
+            deferred.resolve(result);
+          }
+          else{
+            deferred.reject(result);
+          }
+        })
+        .catch(function(error){
+          console.log("Something wrong!");
+        });
+        return deferred.promise;
     };
+
+    service.removeItem = function (itemIndex) {
+      searchCategories.splice(itemIndex, 1);
+    }
+
+    service.getFoundItems = function (){
+      return searchCategories;
+    }
 
     service.addFoundItem = function (data){
       searchCategories.push(data);
@@ -72,6 +109,10 @@
 
     service.getCount = function () {
       return searchCategories.length;
+    }
+
+    service.clearReult = function () {
+      searchCategories = [];
     }
   }
 })();

@@ -18,3 +18,7 @@ body {
 .bg-info {
   padding: 15px;
 }
+
+.error {
+  color: red;
+}

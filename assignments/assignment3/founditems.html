@@ -1,7 +1,7 @@
-<h3>Found items: {{ menu.myTitle }} </h3>
+<h3>{{ menu.title }} </h3>
 <ul>
-  <li ng-repeat="item in menu.searchCategories">
-    <h3>( {{ item.shortname }} ) {{ item.name }}: </h3><br/>
+  <li ng-repeat="item in menu.items">
+    <h4>( {{ item.short_name }} ) {{ item.name }} <button ng-click="menu.removeItem($index)">Don't want this one!</button></h4>
     {{ item.special_instructions }}
   </li>
 </ul>

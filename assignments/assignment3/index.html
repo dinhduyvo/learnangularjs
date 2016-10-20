@@ -11,7 +11,7 @@
     <div ng-controller="MenuSearchController as menu" class="col-xs-12 highlight" style="background: #fff">
       <div class="row">
         <h4>Menu Search</h4>
-        <hr/> {{ menu.keyword }}
+        <hr/>
         <form class="form-inline">
           <div class="form-group">
             <label for="keyword">Please input to search:</label>
@@ -21,8 +21,9 @@
         </form>
         <hr/>
         <div>
-          <menu-search items="menu.founditems" title="{{ menu.title}}"
-            on-remove="list.removeItem(index)"></menu-search>
+          <menu-search
+            items="{{ menu.items }}"
+            title="{{ menu.title}}"></menu-search>
         </div>
       </div>
     </div>

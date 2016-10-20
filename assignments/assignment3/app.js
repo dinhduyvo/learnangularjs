@@ -5,7 +5,7 @@
     .controller('MenuSearchController', MenuSearchController)
     .service('MenuSearchService', MenuSearchService)
     .directive("menuSearch", MenuSearchDirective)
-    .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
+    .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
   function MenuSearchDirective(){
     var ddo = {
@@ -34,9 +34,11 @@
           }
           else {
             menu.title = "Nothing found!";
+            menu.items = [];
           }
         }).catch(function(error){
           menu.title = "Nothing found!";
+          menu.items = [];
         });
       }
       else{
@@ -109,10 +111,6 @@
 
     service.getCount = function () {
       return searchCategories.length;
-    }
-
-    service.clearReult = function () {
-      searchCategories = [];
     }
   }
 })();

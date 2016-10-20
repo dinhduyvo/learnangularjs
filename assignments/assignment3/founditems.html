@@ -1,0 +1,7 @@
+<h3>Found items: {{ menu.myTitle }} </h3>
+<ul>
+  <li ng-repeat="item in menu.searchCategories">
+    <h3>( {{ item.shortname }} ) {{ item.name }}: </h3><br/>
+    {{ item.special_instructions }}
+  </li>
+</ul>

@@ -1,0 +1,30 @@
+<html ng-app="MenuSearchApp">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Menu Items Search App</title>
+    <script src="../../js/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link href="../../bootstrap.css" rel=stylesheet />
+    <link href="style.css" rel=stylesheet />
+  </head>
+  <body>
+    <div ng-controller="MenuSearchController as menu" class="col-xs-12 highlight" style="background: #fff">
+      <div class="row">
+        <h4>Menu Search</h4>
+        <hr/> {{ menu.keyword }}
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="keyword">Please input to search:</label>
+            <input type="text" ng-model="menu.keyword" class="form-control" id="keyword">
+          </div>
+          <button type="button" ng-click="menu.doSearch()" class="btn btn-default">Narrow It Down For Me!</button>
+        </form>
+        <hr/>
+        <div>
+          <menu-search items="menu.founditems" title="{{ menu.title}}"
+            on-remove="list.removeItem(index)"></menu-search>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

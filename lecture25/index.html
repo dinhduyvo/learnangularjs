@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html ng-app='MenuCategoriesApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="../js/angular.min.js"></script>
+    <script src="app.js"></script>
+    <title>Menu Items</title>
+  </head>
+  <body>
+    <h1>Menu items</h1>
+    <div ng-controller="MenuCategoriesController as menu">
+      <h3>List of menu Categories</h3>
+      <ul>
+        <li ng-repeat="category in menu.categories">
+          (<a href="" ng-click="menu.logMenuItems(category.short_name)">{{ category.short_name }}</a>) {{category.name}}
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

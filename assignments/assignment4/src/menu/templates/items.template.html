@@ -1,0 +1,13 @@
+<!-- <div class="col-md-6" ng-if="itemsList.menuItems.length > 0"> -->
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-heading">{{itemsList.catName}}'s Items</div>
+    <div class="panel-body">
+      <ul>
+        <li ng-repeat="item in itemsList.menuItems">
+          {{ item.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

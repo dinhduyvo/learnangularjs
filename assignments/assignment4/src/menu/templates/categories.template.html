@@ -1,0 +1,20 @@
+
+<a ui-sref="home">Home</a> &lt; <span>List</span>
+
+<h3>Restauranh's categories and items: </h3>
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">Categories</div>
+      <div class="panel-body">
+        <ul>
+          <li class="cat-item" ng-repeat="item in categoriesList.categories" ui-sref="categoriesList.itemsList({categoryShortName: item.short_name})">
+            {{ item.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <ui-view></ui-view>
+
+</div>

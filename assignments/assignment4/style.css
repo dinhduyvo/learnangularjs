@@ -1,0 +1,29 @@
+body {
+  background: #eee;
+}
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.highlight {
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    padding: 0px 30px;
+}
+
+.bg-info {
+  padding: 15px;
+}
+
+.error {
+  color: red;
+}
+
+.cat-item:hover {
+  color: orange;
+  cursor: pointer;
+}

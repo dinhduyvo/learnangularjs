@@ -1,4 +1,4 @@
-{"data": 
+{"row1": 
 	{
 	  "id": "1",
 	  "status": "選考中",
@@ -6,29 +6,8 @@
 	  "company": "WEB掲載用匿名会社名",
 	  "applyTo": "IT関連／システムエンジニア（上流）／全般"
 	},
-	{
+ "row2":	{
 	  "id": "2",
-	  "status": "選考中",
-	  "sendDate": "2016/11/07",
-	  "company": "WEB掲載用匿名会社名",
-	  "applyTo": "IT関連／システムエンジニア（上流）／全般"
-	},
-	{
-	  "id": "3",
-	  "status": "選考中",
-	  "sendDate": "2016/11/07",
-	  "company": "WEB掲載用匿名会社名",
-	  "applyTo": "IT関連／システムエンジニア（上流）／全般"
-	},
-	{
-	  "id": "4",
-	  "status": "選考中",
-	  "sendDate": "2016/11/07",
-	  "company": "WEB掲載用匿名会社名",
-	  "applyTo": "IT関連／システムエンジニア（上流）／全般"
-	},
-	{
-	  "id": "5",
 	  "status": "選考中",
 	  "sendDate": "2016/11/07",
 	  "company": "WEB掲載用匿名会社名",
